@@ -3,7 +3,6 @@ package frugalfarerestapi.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import frugalfarerestapi.entity.User;
 import frugalfarerestapi.service.UserService;
 
+
+
 @RestController
 @RequestMapping("/api")
 public class UserRestController {
@@ -28,11 +29,12 @@ public class UserRestController {
 
 	private User theUser;
 
-
+	//Define user endpoint and provides a list of users.
 	@GetMapping("/users")
 	public List<UserDTO> getUsers() {
-
+		
 		theUsers = userService.findAll();
+		
 		List<UserDTO> usersDTO = new ArrayList<>();
 		for (User user : theUsers) {
 			usersDTO.add(new UserDTO(user));
@@ -40,8 +42,7 @@ public class UserRestController {
 		return usersDTO;
 	}
 
-	// define endpoint for "/users/{userId}" - return user at index
-
+	// Define endpoint and returns user with given Id
 	@GetMapping("/users/{userId}")
 	public UserDTO getUser(@PathVariable int userId) {
 

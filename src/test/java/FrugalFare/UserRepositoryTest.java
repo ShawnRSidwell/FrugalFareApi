@@ -20,27 +20,27 @@ public class UserRepositoryTest {
 	@Autowired
 	UserRepository userRepository;
 
-	// checks if repository is autowired
+	//Checks if repository is autowired
 	@Test
 	void testUserRepositoryIsNotNull() {
 		Assertions.assertNotNull(userRepository);
 	}
 
-	// checks if able to find user by ID;
+	//Checks if able to find user by ID;
 	@Test
 	void findUserById() {
-		User user = userRepository.findById(1).get();
+		User user = userRepository.findById(35).get();
 		Assertions.assertNotNull(user);
-		Assertions.assertEquals("Shawn", user.getFirstName());
+		Assertions.assertEquals("Fred", user.getFirstName());
 	}
 
-	// checks to see if findall returns a non-null list;
+	//Checks to see if findall returns a non-null list;
 	@Test
 	void testIfFindAllIsNotNull() {
 		Assertions.assertNotNull(userRepository.findAll());
 	}
 
-	// checks if a new user can be saved to the database;
+	//Checks if a new user can be saved to the database;
 	@Test
 	void testSaveUser() {
 		User user = new User();
@@ -53,10 +53,10 @@ public class UserRepositoryTest {
 		Assertions.assertEquals(user2, user);
 	}
 
-	// deletes a user and checks if they were delted.
+	//Deletes a user and checks if they were delted.
 	@Test
 	void testDeleteUser() {
-		userRepository.deleteById(1);
-		Assertions.assertFalse(userRepository.findById(1).isPresent());
+		userRepository.deleteById(27);
+		Assertions.assertFalse(userRepository.findById(27).isPresent());
 	}
 }

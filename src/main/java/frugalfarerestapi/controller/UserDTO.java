@@ -33,6 +33,7 @@ public class UserDTO {
 
 	private List<RideDTO> rides;
 
+	//Create a data transfer object for a user. Do not include their password.
 	public UserDTO(User user) {
 		this.id = user.getId();
 		this.firstName = user.getFirstName();
